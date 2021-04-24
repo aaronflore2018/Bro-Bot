@@ -22,6 +22,12 @@ async def on_message(message):
         choices = message.content[7:].rsplit('|')
         chosen = random.choice(choices)
         await message.channel.send('Hmmmm well see, the thing is that **' + chosen + '** is just the right answer bro, hands down')
+
+    if message.content.startswith('+commands'):
+        f = open("commands.txt")
+        contents = f.read()
+        f.close()
+        await message.channel.send(str(contents))
   
 
 client.run(os.getenv('TOKEN'))
