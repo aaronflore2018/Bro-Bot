@@ -15,8 +15,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('+hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith('+francothicc'):
+        await message.channel.send('This is a reminder to Franco that you are lookin extra thicc today')
     
     if message.content.startswith('+choose'):
         choices = message.content[7:].rsplit('|')
