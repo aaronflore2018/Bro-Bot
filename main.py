@@ -1,6 +1,7 @@
 import discord
 import os
 import random
+from replit import db
 
 client = discord.Client()
 my_secret = os.environ['TOKEN']
@@ -16,7 +17,8 @@ async def on_message(message):
         return
 
     if message.content.startswith('+francothicc'):
-        await message.channel.send('This is a reminder to Franco that you are lookin extra thicc today')
+      user = '<@355859329557069834>'
+      await message.channel.send('This is a reminder to ' + user + ' that you are lookin extra thicc today')
     
     if message.content.startswith('+choose'):
         choices = message.content[7:].rsplit('|')
@@ -28,6 +30,17 @@ async def on_message(message):
         contents = f.read()
         f.close()
         await message.channel.send(str(contents))
+
+    if message.content.startswith('+downbad'):
+        pics = [
+          'https://cdn.discordapp.com/attachments/332364177140088834/835577831735689307/unknown.png',
+          'https://cdn.discordapp.com/attachments/332364177140088834/835351625405169704/nfolf90vuzu61.png',
+          'https://cdn.discordapp.com/attachments/332364177140088834/834586660334993408/st3gwwy75ku61.png',
+          'https://cdn.discordapp.com/attachments/332364177140088834/833558730343841792/ErNW2Xd.png'
+        ]
+        chosen = random.choice(pics)
+        await message.channel.send(chosen)
+
   
 
 client.run(os.getenv('TOKEN'))
