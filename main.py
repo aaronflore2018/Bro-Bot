@@ -2,6 +2,7 @@ import discord
 import os
 import random
 from replit import db
+from keep_alive import keep_alive
 
 client = discord.Client()
 my_secret = os.environ['TOKEN']
@@ -40,7 +41,59 @@ async def on_message(message):
         ]
         chosen = random.choice(pics)
         await message.channel.send(chosen)
+    
+    if message.content.startswith('+quote'):
+        quoteparts = message.content[7:].rsplit('"')
+        name = quoteparts[0].strip()
+        quote = quoteparts[1].strip()
+        if "quotes" in db.keys():
+          if str(name) in db["quotes"]:
+            quotes = db["quotes"][name]
+            quotes.append(quote)
+            db["quotes"][name] = quotes
+            await message.channel.send("Quote Added to " + name)
+          else:
+            db["quotes"][name] = [quote]
+            await message.channel.send("Quote Added to " + name)
+        else:
+          db["quotes"] = {name: [quote]}
+          await message.channel.send("Quote Added to " + name)
+
+
+    if message.content.startswith('+qlist'):
+      name = message.content[7:].strip()
+      if "quotes" in db.keys():
+        if name in db["quotes"]:
+          quotes = db["quotes"][name]
+          msg = "Here are all the quotes from " + name + ": \n"
+          index = 0 
+          for x in quotes:
+            index += 1
+            msg = msg + str(index) + ". " + x + "\n"
+          await message.channel.send(msg)
+        else:
+          await message.channel.send("Couldn't find name in DB")
+      else:
+        await message.channel.send("Couldn't find the quote DB")
+
+    if message.content.startswith('+cleardb'):
+      db.popitem()
+      await message.channel.send("Database Cleared")
+
+    if message.content.startswith('+randq'):
+      name = message.content[7:].strip()
+      if "quotes" in db.keys():
+        if name in db["quotes"]:
+          quotes = db["quotes"][name]
+          chosen = "\"" + random.choice(quotes) + "\" -" + name
+          await message.channel.send(chosen)
+        else:
+          await message.channel.send("Couldn't find name in DB")
+      else:
+        await message.channel.send("Couldn't find the quote DB")
+    
+          
 
   
-
+keep_alive()
 client.run(os.getenv('TOKEN'))
