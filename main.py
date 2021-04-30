@@ -3,9 +3,16 @@ import os
 import random
 from replit import db
 from keep_alive import keep_alive
+from discord.ext import tasks, commands
 
-client = discord.Client()
+intents =discord.Intents.default()
+intents.members = True
+client = discord.Client(intents=intents)
 my_secret = os.environ['TOKEN']
+
+@tasks.loop(seconds=10.0, count=2)
+async def slow_count():
+  print(slow_count.current_loop)
 
 @client.event
 async def on_ready():
@@ -91,9 +98,39 @@ async def on_message(message):
           await message.channel.send("Couldn't find name in DB")
       else:
         await message.channel.send("Couldn't find the quote DB")
-    
-          
 
+    if message.content.startswith('+name'):
+      name = message.content[6:].strip()
+      guilds = client.guilds
+      print(guilds)
+      guild = client.get_guild(message.guild.id)
+      print(guild)
+      member = guild.get_member_named(name)
+      print(member)
+      await message.channel.send("<@" + str(member.id) + ">")
+
+    if message.content.startswith('+mememute'):
+      name = message.content[10:].strip()
+      guilds = client.guilds
+      guild = client.get_guild(message.guild.id)
+      member = guild.get_member_named(name)
+      if(member == None):
+        await message.channel.send("Cant find person in server")
+      else:
+        if member.voice != None and member.voice.mute == False:
+          @slow_count.before_loop
+          async def before_slow_count():
+            print("Starting timer")
+            await member.edit(mute=True)
+            await message.channel.send("<@" + str(member.id) + "> muted for 10 seconds.")
+
+          @slow_count.after_loop
+          async def after_slow_count():
+            print("Ending timer")
+            await member.edit(mute=False)
+        elif member.voice == None:
+          await message.channel.send("Cant find person in voice channel")
+        slow_count.start()
   
 keep_alive()
 client.run(os.getenv('TOKEN'))

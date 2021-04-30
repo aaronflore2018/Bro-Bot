@@ -11,3 +11,5 @@ Hello! Here are the commands that I follow by, just make sure to call me daddy ;
 5. +qlist : An easy way to see the hall of fame for a specific person. Just type the command, then the person you want to look up. Names are case sensitive. Example: " +qlist Aaron "
 
 6. +randq : Pull up a random quote from someone just to serve them. Just type the command, then the person you want to look up. Names are case sensitive. Example: " +randq Aaron "
+
+7. +mememute : Would it be funny to mute this perosn at a very specific moment, just for the memes? mememute has you covered. Just type the command and then the persons name in the server, then watch them be muted for a full 10 seconds. Enough to be funny for you but enough to not be annoying for them.
