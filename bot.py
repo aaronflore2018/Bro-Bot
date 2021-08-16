@@ -5,12 +5,12 @@ from replit import db
 from keep_alive import keep_alive
 from discord.ext import tasks, commands
 
-intents =discord.Intents.default()
+intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents=intents)
 my_secret = os.environ['TOKEN']
 
-@tasks.loop(seconds=10.0, count=2)
+@tasks.loop(seconds=15.0, count=2)
 async def slow_count():
   print(slow_count.current_loop)
 
@@ -31,13 +31,12 @@ async def on_message(message):
     if message.content.startswith('+choose'):
         choices = message.content[7:].rsplit('|')
         chosen = random.choice(choices)
-        await message.channel.send('Hmmmm well see, the thing is that **' + chosen + '** is just the right answer bro, hands down')
+        quotes = ["Hmmmm well see, the thing is that **" + chosen + "** is just the right answer bro, hands down","Ay look, bro to bro, it's **" + chosen +"**", "Eh, I don't feel like it", "The Andres Scale says: **" + chosen + "**",]
+        await message.channel.send(random.choice(quotes))
 
     if message.content.startswith('+commands'):
-        f = open("commands.txt")
-        contents = f.read()
-        f.close()
-        await message.channel.send(str(contents))
+        await message.channel.send(file=discord.File('commands.txt'))
+
 
     if message.content.startswith('+downbad'):
         pics = [
@@ -107,13 +106,14 @@ async def on_message(message):
       print(guild)
       member = guild.get_member_named(name)
       print(member)
-      await message.channel.send("<@" + str(member.id) + ">")
+      await message.channel.send(str(member.id))
 
     if message.content.startswith('+mememute'):
-      name = message.content[10:].strip()
+      name = message.content[12:-1].strip('!')
+      print(name)
       guilds = client.guilds
       guild = client.get_guild(message.guild.id)
-      member = guild.get_member_named(name)
+      member = guild.get_member(int(name))
       if(member == None):
         await message.channel.send("Cant find person in server")
       else:
@@ -122,7 +122,7 @@ async def on_message(message):
           async def before_slow_count():
             print("Starting timer")
             await member.edit(mute=True)
-            await message.channel.send("<@" + str(member.id) + "> muted for 10 seconds.")
+            await message.channel.send("**" + member.name + "** muted for 15 seconds.")
 
           @slow_count.after_loop
           async def after_slow_count():
@@ -131,6 +131,18 @@ async def on_message(message):
         elif member.voice == None:
           await message.channel.send("Cant find person in voice channel")
         slow_count.start()
+    
+    if message.content.startswith('+unmute'):
+      name = message.content[10:-1].strip()
+      print(name)
+      guilds = client.guilds
+      guild = client.get_guild(message.guild.id)
+      member = guild.get_member(int(name))
+      if(member == None):
+        await message.channel.send("Cant find person in server")
+      else:
+        if member.voice != None and member.voice.mute == True:
+          await member.edit(mute=False)
   
 keep_alive()
 client.run(os.getenv('TOKEN'))

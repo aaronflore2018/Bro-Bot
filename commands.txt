@@ -1,15 +1,34 @@
-Hello! Here are the commands that I follow by, just make sure to call me daddy ;)
+Hello! Here are the commands that I follow by, just make sure to call me 
+daddy ;)
 
-1. +choose : A command that randomizes your choices into a desicion based on God's opinion. To start, start the message with the command then give your choices with the '|' seperator. God will then determine the desicion and the result will come out of my mouth.
+1. +choose : A command that randomizes your choices into a desicion based 
+on God's opinion. To start, start the message with the command then give 
+your choices with the '|' seperator. God will then determine the desicion 
+and the result will come out of my mouth.
 
-2. +francothicc : A command that reminds a certain person that thier rump is beautiful.
+2. +francothicc : A command that reminds a certain person that thier rump 
+is beautiful.
 
-3. +downbad : For when you're just feeling down bad and you need to look at cute girls for comfort.
+3. +downbad : For when you're just feeling down bad and you need to look 
+at cute girls for comfort.
 
-4. +quote : For when a friend says somehtign so stupid that you just have to put it in the history books. If you want to quote someone, just start with the command, followed by the name in reference, and then the quote itself. Make sure the quote is surrounded by quotation marks when you type it in, otherwise it will not work. The names that you use are case sensitive, so make sure to keep everything the same. Example: " +quote Aaron "its all according to umm... keikaku" "
+4. +quote : For when a friend says something so stupid that you just have 
+to put it in the history books. If you want to quote someone, just start 
+with the command, followed by the name in reference, and then the quote itself. 
+Make sure the quote is surrounded by quotation marks when you type it in, 
+otherwise it will not work. The names that you use are case sensitive, 
+so make sure to keep everything the same. 
+Example: " +quote Aaron 'its all according to umm... keikaku' "
 
-5. +qlist : An easy way to see the hall of fame for a specific person. Just type the command, then the person you want to look up. Names are case sensitive. Example: " +qlist Aaron "
+5. +qlist : An easy way to see the hall of fame for a specific person. 
+Just type the command, then the person you want to look up. Names are case 
+sensitive. Example: " +qlist Aaron "
 
-6. +randq : Pull up a random quote from someone just to serve them. Just type the command, then the person you want to look up. Names are case sensitive. Example: " +randq Aaron "
+6. +randq : Pull up a random quote from someone just to serve them. Just 
+type the command, then the person you want to look up. Names are case sensitive. 
+Example: " +randq Aaron "
 
-7. +mememute : Would it be funny to mute this perosn at a very specific moment, just for the memes? mememute has you covered. Just type the command and then the persons name in the server, then watch them be muted for a full 10 seconds. Enough to be funny for you but enough to not be annoying for them.
+7. +mememute : Would it be funny to mute this perosn at a very specific 
+moment, just for the memes? mememute has you covered. Just type the command 
+and then the persons name in the server, then watch them be muted for a full 
+15 seconds. Enough to be funny for you but enough to not be annoying for them.
